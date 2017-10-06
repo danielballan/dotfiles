@@ -3,6 +3,9 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
+" spell check
+set spellfile=~/.vim/spell/en.utf-8.add
+set spelllang=en
 
 " All of this is from http://stackoverflow.com/a/12587335/1221924
 set autoindent " always set autoindenting on"
@@ -18,7 +21,7 @@ set shiftround " rounds indent to a multiple of shiftwidth"
 colorscheme github
 
 " pydiction config
-let g:pydiction_location = '/home/user/.vim/bundle/pydiction/complete-dict' 
+let g:pydiction_location = '/home/user/.vim/bundle/pydiction/complete-dict'
 
 " autowrap markdown files
 " https://robots.thoughtbot.com/wrap-existing-text-at-80-characters-in-vim

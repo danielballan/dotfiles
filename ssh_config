@@ -301,6 +301,12 @@ Host 8id-ws1
     ProxyCommand ssh -qY box64-1 -W %h:%p
     LocalForward 11004 localhost:4000
 
+Host 28id1-ws3
+    Hostname xf28id1-ws3.cs.nsls2.local
+    ForwardAgent yes
+    ProxyCommand ssh -qY box64-1 -W %h:%p
+    LocalForward 12000 localhost:4000
+
 Host 28id-ca1
     Hostname xf28id-ca1.cs.nsls2.local
     ForwardAgent yes
