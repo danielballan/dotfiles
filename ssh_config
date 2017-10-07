@@ -2,23 +2,23 @@ Host *
    ForwardX11 yes
    ForwardAgent yes
 
-host bnl
+Host bnl
     HostName ssh.bnl.gov
     User dallan
     LocalForward 3128 192.168.1.130:3128
     ForwardAgent yes
 
-host box64
+Host box64
     User dallan
     ForwardAgent yes
     ProxyCommand ssh -q bnl nc box64-2.nsls2.bnl.gov 22
 
-host xf??id*-*
+Host xf??id*-*
     User dallan
     ForwardAgent yes
     ProxyCommand ssh box64 nc %h.cs.nsls2.local 22
 
-host jupyter*
+Host jupyter*
     User dallan
     ForwardAgent yes
     ProxyCommand ssh box64 nc %h.cs.nsls2.local 22
