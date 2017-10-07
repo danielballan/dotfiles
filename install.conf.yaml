@@ -4,5 +4,8 @@
    ~/.vimrc: vimrc
    ~/.vim: vim
    ~/.gitconfig: gitconfig
+   ~/.bash_profile: bash_profile
+   ~/.bashrc: bashrc
+   ~/.bash-git-prompt: bash-git-prompt/
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
