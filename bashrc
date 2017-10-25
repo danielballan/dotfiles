@@ -5,8 +5,13 @@ function condame {
     export PATH=~/miniconda3/bin:$PATH
     source activate dd
 }
+
 # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
 source ~/.bash-git-prompt/gitprompt.sh
+
+# git auto-completion
+# https://git-scm.com/book/en/v1/Git-Basics-Tips-and-Tricks#Auto-Completion
+source ~/.git-completion.bash
 
 # aliases
 alias ll='ls -alF'

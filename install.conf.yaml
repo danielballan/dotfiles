@@ -7,5 +7,6 @@
    ~/.bash_profile: bash_profile
    ~/.bashrc: bashrc
    ~/.bash-git-prompt: bash-git-prompt/
+   ~/.git-completion.bash: git-completion.bash
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
