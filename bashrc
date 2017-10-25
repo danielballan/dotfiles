@@ -15,6 +15,7 @@ source ~/.git-completion.bash
 
 # aliases
 alias ll='ls -alF'
+alias git=hub || git  # fall back if hub is not installed
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
