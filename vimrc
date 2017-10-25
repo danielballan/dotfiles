@@ -35,3 +35,6 @@ let g:airline_powerline_fonts = 1
 
 :set textwidth=79
 :set colorcolumn=+1
+
+" fugitive options
+:set diffopt+=vertical
