@@ -17,6 +17,10 @@ source ~/.git-completion.bash
 alias ll='ls -alF'
 alias git=hub || git  # fall back if hub is not installed
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+function prune_remote {
+    git checkout master
+    git fetch origin
+    git remote prune origin
+    git branch -r --merged | grep origin | grep -v master | sed "s/origin\/\(.*\)/\1/" | xargs -n 1 git push origin --delete
+    git remote prune origin
+}
