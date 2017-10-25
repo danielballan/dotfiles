@@ -23,6 +23,11 @@ Host jupyter*
     ForwardAgent yes
     ProxyCommand ssh box64 nc %h.cs.nsls2.local 22
 
+Host anstower
+    User dallan
+    ForwardAgent yes
+    ProxyCommand ssh box64 nc %h.cs.nsls2.local 22
+
 Host freyja
     User dallan
     ForwardAgent yes
