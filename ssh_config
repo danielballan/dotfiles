@@ -13,6 +13,11 @@ Host box64
     ForwardAgent yes
     ProxyCommand ssh -q bnl nc box64-2.nsls2.bnl.gov 22
 
+Host xf??bm*-*
+    User dallan
+    ForwardAgent yes
+    ProxyCommand ssh box64 nc %h.cs.nsls2.local 22
+
 Host xf??id*-*
     User dallan
     ForwardAgent yes
