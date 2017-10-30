@@ -1,6 +1,8 @@
 - clean: ['~']
 - link:
    ~/.ssh/config: ssh_config
+   ~/.fzf.bash: fzf.bash
+   ~/.fzf.zsh: fzf.zsh
    ~/.vimrc: vimrc
    ~/.vim: vim
    ~/.gitconfig: gitconfig

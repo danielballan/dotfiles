@@ -24,3 +24,5 @@ function prune_remote {
     git branch -r --merged | grep origin | grep -v master | sed "s/origin\/\(.*\)/\1/" | xargs -n 1 git push origin --delete
     git remote prune origin
 }
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

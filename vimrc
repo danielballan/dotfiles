@@ -38,3 +38,33 @@ let g:airline_powerline_fonts = 1
 
 " fugitive options
 :set diffopt+=vertical
+
+set rtp+=/usr/local/opt/fzf
+
+fun! s:fzf_find_root()
+    let s:top_marker_directories = ['.git', '.hg', 'configure']
+    for marker_dir in s:top_marker_directories
+        let path = finddir(marker_dir, expand("%:p:h").";")
+        if path != ''
+            return fnamemodify(substitute(path, marker_dir, "", ""), ":p:h")
+        endif
+    endfor
+    return path
+endfun
+
+" fzf functionality like ctrl-p
+nnoremap <c-p> :exe 'Files ' . <SID>fzf_find_root()<CR>
+" show fzf list of tags
+nnoremap <Leader>t :Tags<CR>
+" show fzf list of tags in the buffer
+nnoremap <Leader>T :BTags<CR>
+" show fzf list of files in git repo
+nnoremap <Leader>o :GitFiles<CR>
+" show git commits in fzf window
+nnoremap <Leader>g :Commits<CR>
+" show git commits for current buffer in fzf window
+nnoremap <Leader>G :BCommits<CR>
+" colorscheme list
+nnoremap <Leader>C :Colors<CR>
+" help tags
+nnoremap <Leader>H :Helptags<CR>
