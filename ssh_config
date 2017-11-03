@@ -50,6 +50,7 @@ Host cooley
     # http://www.alcf.anl.gov/user-guides/new-user-guide
 
 Host ec2
+    User ec2-user
     Hostname 52.70.105.68
     ForwardAgent yes
     ProxyCommand ssh -qY ssh.bnl.gov -W %h:%p
