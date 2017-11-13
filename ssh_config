@@ -6,32 +6,24 @@ Host bnl
     HostName ssh.bnl.gov
     User dallan
     LocalForward 3128 192.168.1.130:3128
+    # To hop through firewall using browser,
+    # configure Firefox to use network proxy localhost:3128 for all protocols.
     ForwardAgent yes
 
-Host box64
-    User dallan
-    ForwardAgent yes
-    ProxyCommand ssh -q bnl nc box64-2.nsls2.bnl.gov 22
+host ossh
+     User dallan
+     ForwardAgent yes
+     ProxyCommand ssh -q bnl nc ssh.nsls2.bnl.gov 22
 
-Host xf??bm*-*
-    User dallan
-    ForwardAgent yes
-    ProxyCommand ssh box64 nc %h.cs.nsls2.local 22
+host issh
+     HostName ssh.nsls2.bnl.gov
+     User dallan
+     ForwardAgent yes
 
-Host xf??id*-*
+Host xf??id-* xf??id?-* xf??bm-* xf??bm?-* box64* jupyter* anstower
     User dallan
     ForwardAgent yes
-    ProxyCommand ssh box64 nc %h.cs.nsls2.local 22
-
-Host jupyter*
-    User dallan
-    ForwardAgent yes
-    ProxyCommand ssh box64 nc %h.cs.nsls2.local 22
-
-Host anstower
-    User dallan
-    ForwardAgent yes
-    ProxyCommand ssh box64 nc %h.cs.nsls2.local 22
+    ProxyCommand ssh ossh nc %h.cs.nsls2.local 22
 
 Host freyja
     User dallan
@@ -39,13 +31,16 @@ Host freyja
     ProxyCommand ssh -q bnl nc freyja.nsls2.bnl.gov 22
 
 Host danallan
+    User dallan
     Hostname danallan.com
 
 Host mobtown
     # note: this uses the key id_rsa, others use id_rsa_osx
+    User dallan
     Hostname mobtownballroom.com
 
 Host cooley
+    User dallan
     Hostname cooley.alcf.anl.gov
     # http://www.alcf.anl.gov/user-guides/new-user-guide
 
