@@ -30,4 +30,7 @@ function prune_remote {
     git remote prune origin
 }
 
+# To install fzf:
+# git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+# ~/.fzf/install
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
