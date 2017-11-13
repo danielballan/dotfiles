@@ -15,7 +15,12 @@ source ~/.git-completion.bash
 
 # aliases
 alias ll='ls -alF'
-alias git=hub || git  # fall back if hub is not installed
+
+# Use GitHub's extension of the git CLI if it is installed.
+if [ `which hub` ]
+then
+    alias git=hub
+fi
 
 function prune_remote {
     git checkout master
