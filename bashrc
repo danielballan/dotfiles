@@ -34,3 +34,8 @@ function prune_remote {
 # git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 # ~/.fzf/install
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Check what is using the OSX webcam.
+function whosgotthecamera {
+    lsof | grep -i VDC
+}
