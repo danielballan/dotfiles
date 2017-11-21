@@ -30,6 +30,11 @@ Host freyja
     ForwardAgent yes
     ProxyCommand ssh -q bnl nc freyja.nsls2.bnl.gov 22
 
+Host dilbert
+    User dallan
+    ForwardAgent yes
+    ProxyCommand ssh -q bnl nc dilbert.nsls2.bnl.gov 22
+
 Host danallan
     User dallan
     Hostname danallan.com
