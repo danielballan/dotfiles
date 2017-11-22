@@ -39,6 +39,19 @@ let g:airline_powerline_fonts = 1
 " fugitive options
 :set diffopt+=vertical
 
+" from http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
+
+" short-cut for accessing parent tree in Gedit context
+autocmd User fugitive
+  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+  \   nnoremap <buffer> .. :edit %:h<CR> |
+  \ endif
+" auto-clean fugitive buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
+" add git branch to status line
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+
 set rtp+=~/.fzf
 
 fun! s:fzf_find_root()
