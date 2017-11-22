@@ -5,6 +5,7 @@
    ~/.fzf.zsh: fzf.zsh
    ~/.vimrc: vimrc
    ~/.vim: vim
+   ~/.config/nvim: nvim
    ~/.gitconfig: gitconfig
    ~/.bash_profile: bash_profile
    ~/.bashrc: bashrc
