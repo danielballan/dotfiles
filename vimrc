@@ -39,7 +39,7 @@ let g:airline_powerline_fonts = 1
 " fugitive options
 :set diffopt+=vertical
 
-set rtp+=/usr/local/opt/fzf
+set rtp+=~/.fzf
 
 fun! s:fzf_find_root()
     let s:top_marker_directories = ['.git', '.hg', 'configure']
