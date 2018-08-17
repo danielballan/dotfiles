@@ -1,9 +1,28 @@
 [user]
-	name = danielballan
-	email = daniel.b.allan@gmail.com
-[filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
+	name = Dan Allan
+    useConfigOnly = true
+    # Email is set in other context-specific git config files by includeIf,
+    # below, to apply work or personal email appropriately.
+[includeIf "gitdir:~/Repos/bnl/**"]
+    path = ~/.gitconfig_bnl
+[includeIf "gitdir:~/Repos/personal/**"]
+    path = ~/.gitconfig_gmail
 [core]
 	editor = /usr/bin/vim
+[alias]
+    credit = blame
+    co = checkout
+    br = branch
+# Verify that blob contents actually match hashes.
+[transfer]
+        fsckobjects = true
+[fetch]
+        fsckobjects = true
+[receive]
+        fsckObjects = true
+[pull]
+    ff = only
+[color]
+    ui = auto
+[rerere]
+    enabled = true
