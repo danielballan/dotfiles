@@ -7,6 +7,8 @@
    ~/.vim: vim
    ~/.config/nvim: nvim
    ~/.gitconfig: gitconfig
+   ~/.gitconfig_gmail: gitconfig_gmail
+   ~/.gitconfig_bnl: gitconfig_bnl
    ~/.bash_profile: bash_profile
    ~/.bashrc: bashrc
    ~/.bash-git-prompt: bash-git-prompt/

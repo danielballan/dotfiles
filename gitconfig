@@ -5,6 +5,8 @@
     # below, to apply work or personal email appropriately.
 [includeIf "gitdir:~/Repos/bnl/**"]
     path = ~/.gitconfig_bnl
+[includeIf "gitdir:~/Repos/edgi/**"]
+    path = ~/.gitconfig_gmail
 [includeIf "gitdir:~/Repos/personal/**"]
     path = ~/.gitconfig_gmail
 [core]

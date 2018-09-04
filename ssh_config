@@ -20,7 +20,7 @@ host issh
      User dallan
      ForwardAgent yes
 
-Host xf??id-* xf??id?-* xf??bm-* xf??bm?-* box64* jupyter* anstower
+Host xf??id-* xf??id?-* xf??bm-* xf??bm?-* box64* jupyter* jhub* anstower
     User dallan
     ForwardAgent yes
     ProxyCommand ssh ossh nc %h.cs.nsls2.local 22
@@ -49,10 +49,15 @@ Host cooley
     Hostname cooley.alcf.anl.gov
     # http://www.alcf.anl.gov/user-guides/new-user-guide
 
-Host ec2
+Host try
     User ec2-user
     Hostname try.nsls2.bnl.gov
     # Hostname 52.70.105.68
     ForwardAgent yes
     ProxyCommand ssh -qY ssh.bnl.gov -W %h:%p
     LocalForward 13001 localhost:4000
+
+Host openstack-1
+    User ec2-user
+    Hostname 18.209.100.243
+    ForwardAgent yes

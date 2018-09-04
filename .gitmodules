@@ -1,9 +1,6 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
-[submodule "vim/bundle/vim-github-colorscheme"]
-    path = vim/bundle/vim-github-colorscheme
-    url = https://github.com/endel/vim-github-colorscheme.git
 [submodule "vim/bundle/supertab"]
     path = vim/bundle/supertab
     url = https://github.com/ervandew/supertab.git
@@ -40,3 +37,9 @@
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround
+[submodule "vim/pack/themes/opt/solarized8"]
+	path = vim/pack/themes/opt/solarized8
+	url = https://github.com/lifepillar/vim-solarized8.git
+[submodule "vim/bundle/vim-unimpaired"]
+	path = vim/bundle/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired

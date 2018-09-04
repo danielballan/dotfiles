@@ -1,2 +1,5 @@
 vim/.netrwhist
+nvim/.netrwhist
 *.swp
+vim/spell/
+!vim/spell/en.utf-8.add

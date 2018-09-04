@@ -17,8 +17,9 @@ set expandtab " Use spaces, not tabs, for autoindent/tab key."
 set shiftwidth=4 " an indent level is 4 spaces wide."
 set shiftround " rounds indent to a multiple of shiftwidth"
 
-" color scheme from https://github.com/endel/vim-github-colorscheme
-colorscheme github
+set background=dark
+colorscheme solarized8
+let g:solarized_diffmode = "bold"
 
 " pydiction config
 let g:pydiction_location = '/home/user/.vim/bundle/pydiction/complete-dict'
