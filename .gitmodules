@@ -42,4 +42,4 @@
 	url = https://github.com/tpope/vim-unimpaired
 [submodule "vim/bundle/repeat"]
 	path = vim/bundle/repeat
-	url = https://tpope.io/vim/repeat.git
+	url = https://github.com/tpope/vim-repeat
