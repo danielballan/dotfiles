@@ -1,5 +1,4 @@
 Host *
-   ForwardX11 yes
    ForwardAgent yes
 
 Host bnl
@@ -20,7 +19,7 @@ host issh
      User dallan
      ForwardAgent yes
 
-Host xf??id-* xf??id?-* xf??bm-* xf??bm?-* box64* jupyter* jhub* anstower
+Host xf??id-* xf??id?-* xf??bm-* xf??bm?-* box64* jupyter* jhub* anstower cmb*
     User dallan
     ForwardAgent yes
     ProxyCommand ssh ossh nc %h.cs.nsls2.local 22
