@@ -1,4 +1,3 @@
-h
 historydict
 HistoryDict
 RunEngine
@@ -62,3 +61,7 @@ on
 refactor
 beamlines
 beamline
+JSON
+EventPage
+losslessly
+DatumPage
