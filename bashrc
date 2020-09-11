@@ -24,10 +24,10 @@ fi
 
 function prune_remote {
     git checkout master
-    git fetch origin
-    git remote prune origin
-    git branch -r --merged | grep origin | grep -v master | sed "s/origin\/\(.*\)/\1/" | xargs -n 1 git push origin --delete
-    git remote prune origin
+    git fetch danielballan
+    git remote prune danielballan
+    git branch -r --merged | grep danielballan | grep -v master | sed "s/danielballan\/\(.*\)/\1/" | xargs -n 1 git push danielballan --delete
+    git remote prune danielballan
 }
 
 # To install fzf:
