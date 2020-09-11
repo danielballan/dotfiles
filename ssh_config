@@ -1,6 +1,10 @@
 Host *
    ForwardAgent yes
 
+Host github.com
+  Hostname ssh.github.com
+  Port 443
+
 Host bnl
     HostName ssh.bnl.gov
     User dallan
@@ -8,6 +12,28 @@ Host bnl
     # To hop through firewall using browser,
     # configure Firefox to use network proxy localhost:3128 for all protocols.
     ForwardAgent yes
+
+Host dockervm
+     HostName dockervm.sdcc.bnl.gov
+     User dallan
+     ForwardAgent yes
+
+Host sdcc
+     HostName ssh.sdcc.bnl.gov
+     User dallan
+     ForwardAgent yes
+
+Host broker
+     HostName broker
+     User root
+     ForwardAgent yes
+     ProxyCommand ssh -q sdcc nc %h.sdcc.bnl.gov 22
+
+Host nslshub
+     HostName nslshub01
+     User dallan
+     ForwardAgent yes
+     ProxyCommand ssh -q sdcc nc %h.sdcc.bnl.gov 22
 
 host ossh
      User dallan
@@ -19,15 +45,30 @@ host issh
      User dallan
      ForwardAgent yes
 
-Host xf??id-* xf??id?-* xf??bm-* xf??bm?-* box64* jupyter* jhub* anstower cmb*
+Host xf??id-* xf??id?-* xf??bm-* xf??bm?-* apcpu* box64* jupyterhub jupyterhub2 jhub* anstower cmb* mongo* ansible* dbox dtn*
     User dallan
     ForwardAgent yes
     ProxyCommand ssh ossh nc %h.cs.nsls2.local 22
+
+Host nslsman* nslskafka* nslsmongo*
+    User dallan
+    ForwardAgent yes
+    ProxyCommand ssh -q sdcc nc %h 22
+
+Host bmore
+    User dallan
+    ForwardAgent yes
+    ProxyCommand ssh -q bnl nc 130.199.219.53 22
 
 Host freyja
     User dallan
     ForwardAgent yes
     ProxyCommand ssh -q bnl nc freyja.nsls2.bnl.gov 22
+
+Host big-chungus
+    User dallan
+    ForwardAgent yes
+    ProxyCommand ssh -q bnl nc 130.199.219.41 22
 
 Host dilbert
     User dallan
@@ -60,3 +101,19 @@ Host openstack-1
     User ec2-user
     Hostname 18.209.100.243
     ForwardAgent yes
+
+# Lab AWS
+Host jupyterhub-container-demo-with-docker
+    User ec2-user
+    Hostname 54.242.213.176
+    ForwardAgent yes
+
+Host jupyterhub-container-demo-no-docker
+    User ec2-user
+    Hostname 3.89.210.38
+    ForwardAgent yes
+
+
+Host noether
+    User dballan
+    Hostname noether.dhcp.lbl.gov
