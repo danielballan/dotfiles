@@ -1,0 +1,5 @@
+#! /usr/bin/bash
+set -e
+set -x
+
+ssh -D 8124 -C -vvvv -N $USER@ssh.bnl.gov
