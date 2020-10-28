@@ -3,10 +3,12 @@
 function condame {
     echo Adding conda to \$PATH....
     export PATH=~/miniconda3/bin:$PATH
-    source activate dd
+    source activate py38
 }
 
 # GIT_PROMPT_THEME=Solarized # use theme optimized for solarized color scheme
+source ~/.bash-git-prompt/prompt-colors.sh
+GIT_PROMPT_START="_LAST_COMMAND_INDICATOR_ ${White}\u@\h ${Yellow}\w${ResetColor}"
 source ~/.bash-git-prompt/gitprompt.sh
 
 # git auto-completion
