@@ -82,3 +82,4 @@ nnoremap <Leader>G :BCommits<CR>
 nnoremap <Leader>C :Colors<CR>
 " help tags
 nnoremap <Leader>H :Helptags<CR>
+imap <C-[> <Esc>
