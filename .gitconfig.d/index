@@ -11,6 +11,7 @@ path = ~/.gitconfig.d/pesonal
 path = ~/.gitconfig.d/personal
 [core]
 editor = /usr/bin/vim
+excludesfile = ~/.gitignore_global
 [alias]
 credit = blame
 co = checkout
