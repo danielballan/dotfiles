@@ -42,3 +42,5 @@ link_file .bash_profile
 link_file .bashrc.d
 link_file .vimrc
 link_file .tmux.conf
+link_file .gitconfig.d
+link_file .gitconfig

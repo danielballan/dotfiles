@@ -1,0 +1,48 @@
+[user]
+name = Dan Allan
+useConfigOnly = true
+# Email is set in other context-specific git config files by includeIf,
+# below, to apply work or personal email appropriately.
+[includeIf "gitdir:~/Repos/bnl/**"]
+path = ~/.gitconfig.d/bnl
+[includeIf "gitdir:~/Repos/edgi/**"]
+path = ~/.gitconfig.d/pesonal
+[includeIf "gitdir:~/Repos/personal/**"]
+path = ~/.gitconfig.d/personal
+[core]
+editor = /usr/bin/vim
+[alias]
+credit = blame
+co = checkout
+br = branch
+# Verify that blob contents actually match hashes.
+[transfer]
+fsckobjects = true
+[fetch]
+fsckobjects = true
+[receive]
+fsckObjects = true
+[pull]
+ff = only
+[color]
+ui = auto
+[rerere]
+enabled = true
+[diff "jupyternotebook"]
+command = git-nbdiffdriver diff
+[merge "jupyternotebook"]
+driver = git-nbmergedriver merge %O %A %B %L %P
+name = jupyter notebook merge driver
+[difftool "nbdime"]
+cmd = git-nbdifftool diff \"$LOCAL\" \"$REMOTE\" \"$BASE\"
+[difftool]
+prompt = false
+[mergetool "nbdime"]
+cmd = git-nbmergetool merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[mergetool]
+prompt = false
+[filter "lfs"]
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
