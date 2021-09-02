@@ -57,7 +57,8 @@ function parse_git_dirty {
 
 prompt_cmd () {
     LAST_STATUS=$?
-    PS1=""
+    PS1=`date +"%H:%M"`
+    PS1+=" "
     # Test if user is root and set user color appropriately
     if [[ $(id -u) == 0 ]]
     then
