@@ -1,1 +1,2 @@
 .bashrc.d/private*
+.ssh/config.d/private*

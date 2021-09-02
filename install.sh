@@ -45,3 +45,5 @@ link_file .tmux.conf
 link_file .gitconfig.d
 link_file .gitconfig
 link_file .gitignore_global
+link_file .ssh/config
+link_file .ssh/config.d
