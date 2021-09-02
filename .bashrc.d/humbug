@@ -1,0 +1,7 @@
+# https://github.com/nvbn/thefuck#
+# A safe-for-work alias for this
+
+if [ -f /usr/local/bin/fuck  ] || [ -f /opt/boxen/homebrew/bin/fuck ]; then
+  eval $(thefuck --alias)
+fi
+alias humbug=fuck
