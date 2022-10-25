@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+
+# Set ag as the default source for fzf - and ignore stuff in gitignore/hgignore
+if [ ! -z "$(which ag 2> /dev/null)" ]; then
+    export FZF_DEFAULT_COMMAND='ag -g ""'
+else
+    export FZF_DEFAULT_COMMAND='find .'
+fi
+
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
