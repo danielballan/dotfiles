@@ -3,5 +3,5 @@
 function condame {
     echo Adding conda to \$PATH....
     export PATH=~/miniconda3/bin:$PATH
-    source activate py38
+    source activate py39
 }
