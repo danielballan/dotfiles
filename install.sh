@@ -45,3 +45,4 @@ link_file .gitconfig
 link_file .gitignore_global
 link_file .ssh/config
 link_file .ssh/config.d
+link_file .config/nvim
