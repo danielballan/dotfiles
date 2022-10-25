@@ -1,0 +1,1 @@
+alias cleanup_git_branches='git branch --merged | egrep -v "(^\*|master|main)" | xargs git branch -d; git remote prune danielballan'
