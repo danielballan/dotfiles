@@ -49,7 +49,10 @@ nnoremap <Leader>T :BTags<CR>
 nnoremap <Leader>b :Buffers<CR>
 
 " vim-sideways moves through argments list and similar
-" nnoremap <Leader>h :SidewaysLeft<CR>
-" nnoremap <Leader>l :SidewaysRight<CR>
+nnoremap <Leader>h :SidewaysLeft<CR>
+nnoremap <Leader>l :SidewaysRight<CR>
+
+autocmd FileType markdown nnoremap <buffer> <Leader>r :MarkdownRunner<CR>
+autocmd FileType markdown nnoremap <buffer> <Leader>R :MarkdownRunnerInsert<CR>
 
 colorscheme PaperColor
