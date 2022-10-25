@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+function replace_all () {
+  find ./ -type f -name $1 -exec sed -i -e "s/$2/$3/g" {} \;
+}
+
