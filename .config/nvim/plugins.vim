@@ -4,7 +4,7 @@ let bundle_path=config_path . "/plugged"
 call plug#begin(bundle_path)
 call plug#begin()
 
-Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'https://github.com/neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'https://github.com/junegunn/fzf.vim'
