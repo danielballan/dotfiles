@@ -28,6 +28,7 @@ endif
 execute "source " . g:config_path . "/functions.vim"
 
 call SourceConfig('plugins.vim')
+call SourceConfig('static.vim')
 
 filetype plugin indent on
 syntax on
@@ -52,7 +53,11 @@ nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>h :SidewaysLeft<CR>
 nnoremap <Leader>l :SidewaysRight<CR>
 
+" Use \r to execute Markdown codeblock. \R inserts the output in the document.
 autocmd FileType markdown nnoremap <buffer> <Leader>r :MarkdownRunner<CR>
 autocmd FileType markdown nnoremap <buffer> <Leader>R :MarkdownRunnerInsert<CR>
+
+" Use \f to run fixers.
+autocmd FileType python map <buffer> <Leader>f :ALEFix<CR>
 
 colorscheme PaperColor

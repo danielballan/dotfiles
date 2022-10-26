@@ -42,4 +42,7 @@ Plug 'NLKNguyen/papercolor-theme'
 " Execute Python snippets in Markdown
 Plug 'dbridges/vim-markdown-runner'
 
+" linters and fixers
+Plug 'dense-analysis/ale'
+
 call plug#end()
