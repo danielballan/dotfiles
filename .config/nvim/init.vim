@@ -33,9 +33,11 @@ call SourceConfig('static.vim')
 filetype plugin indent on
 syntax on
 
-" Set up Ctrl+P.
+" Ctrl+p for file search.
 nnoremap <c-p>     :exe 'Files ' . FzfFindRoot()<CR>
 nnoremap <c-s-P>   :Files .<CR>
+" Ctrl+h for file search sorted by recent or open buffers
+nnoremap <c-h>     :History<CR>
 
 " Carriage return is now colon
 nnoremap <CR> :
