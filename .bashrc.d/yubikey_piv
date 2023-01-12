@@ -7,6 +7,8 @@ set-pcks11-lib() {
 
     if [[ $ID =~ "debian" ]]; then
       PKCS11_LIB=/usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
+    elif [[ $ID =~ "ubuntu" ]]; then
+      PKCS11_LIB=/usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
     elif [[ $ID =~ "pop" ]]; then
       PKCS11_LIB=/usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
     elif [[ $ID_LIKE =~ "fedora" ]]; then
