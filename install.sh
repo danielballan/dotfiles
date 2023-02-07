@@ -37,12 +37,13 @@ link_file ()
   fi
 }
 
-link_file .bashrc
 link_file .bash_profile
+link_file .bashrc
 link_file .bashrc.d
-link_file .gitconfig.d
+link_file .config/nvim
 link_file .gitconfig
+link_file .gitconfig.d
 link_file .gitignore_global
+link_file .inputrc
 link_file .ssh/config
 link_file .ssh/config.d
-link_file .config/nvim
