@@ -89,3 +89,6 @@ prompt_cmd () {
 PROMPT_COMMAND='prompt_cmd'
 
 export CLICOLOR=1
+
+# Omit commands from history if they have a leading space.
+export HISTCONTROL=ignorespace
