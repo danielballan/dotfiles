@@ -1,5 +1,6 @@
 [user]
 name = Dan Allan
+signingkey = /home/dallan/.ssh/id_ed25519.pub
 useConfigOnly = true
 # Email is set in other context-specific git config files by includeIf,
 # below, to apply work or personal email appropriately.
@@ -47,3 +48,9 @@ clean = git-lfs clean -- %f
 smudge = git-lfs smudge -- %f
 process = git-lfs filter-process
 required = true
+[gpg]
+format = ssh
+[commit]
+gpgsign = true
+[init]
+defaultBranch = main
