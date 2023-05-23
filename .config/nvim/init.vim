@@ -63,3 +63,5 @@ autocmd FileType markdown nnoremap <buffer> <Leader>R :MarkdownRunnerInsert<CR>
 autocmd FileType python map <buffer> <Leader>f :ALEFix<CR>
 
 colorscheme PaperColor
+
+set spell
