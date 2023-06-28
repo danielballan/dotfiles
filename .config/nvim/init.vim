@@ -23,6 +23,9 @@ else
     let g:config_path=$HOME . "/.vim"
 endif
 
+" Use system Python, bypassing any currently-activated virtual environment.
+let g:python3_host_prog = "/usr/bin/python"
+
 " This defines SourceConfig, which we can use from here forward
 " to source additional config files.
 execute "source " . g:config_path . "/functions.vim"
