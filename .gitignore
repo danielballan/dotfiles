@@ -1,3 +1,5 @@
 .bashrc.d/private*
-.ssh/config.d/private*
 .config/nvim/plugged/
+.ssh/config.d/private*
+.vim/autoload
+.vim/plugged

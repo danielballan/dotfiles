@@ -68,3 +68,5 @@ autocmd FileType python map <buffer> <Leader>f :ALEFix<CR>
 colorscheme PaperColor
 
 set spell
+
+let g:vim_ai_token_file_path = '~/.config/openai.token'

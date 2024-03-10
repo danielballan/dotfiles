@@ -40,7 +40,8 @@ link_file ()
 link_file .bash_profile
 link_file .bashrc
 link_file .bashrc.d
-link_file .config/nvim
+link_file .vim
+link_file .vimrc
 link_file .gitconfig
 link_file .gitconfig.d
 link_file .gitignore_global
