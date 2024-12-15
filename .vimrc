@@ -7,6 +7,7 @@ set foldmethod=indent
 set guioptions=cmgtTr
 set history=500                        " keep x lines of command line history
 set novb                               " ** visual bell, no beeping! **
+set belloff=all
 set number                             " line numbering
 set numberwidth=5
 set ruler                              " show the cursor position all the time
