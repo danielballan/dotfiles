@@ -48,3 +48,4 @@ link_file .gitignore_global
 link_file .inputrc
 link_file .ssh/config
 link_file .ssh/config.d
+link_file .config/wezterm/wezterm.lua
