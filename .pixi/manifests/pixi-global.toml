@@ -1,0 +1,11 @@
+version = 1
+
+[envs.ripgrep]
+channels = ["conda-forge"]
+dependencies = { ripgrep = "*" }
+exposed = { rg = "rg" }
+
+[envs.fd-find]
+channels = ["conda-forge"]
+dependencies = { fd-find = "*" }
+exposed = { fd = "fd" }

@@ -50,3 +50,4 @@ link_file .ssh/config
 link_file .ssh/config.d
 mkdir -p $HOME/.config/wezterm
 link_file .config/wezterm/wezterm.lua
+link_file .pixi/manifests/pixi-global.toml
