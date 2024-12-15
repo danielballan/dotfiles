@@ -1,0 +1,1 @@
+alias activate='pixi shell --manifest-path $HOME/Repos/bnl/dd/pixi.toml'
