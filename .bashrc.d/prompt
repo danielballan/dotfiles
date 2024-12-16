@@ -81,7 +81,7 @@ prompt_cmd () {
     else
         PS1+="$COLOR_RED"
     fi
-    PS1+='\$ '
+    PS1+='❯ '
     PS1+="$COLOR_WHITE"
     export PROMPT=$PS1
 }
