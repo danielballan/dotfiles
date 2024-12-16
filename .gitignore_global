@@ -54,3 +54,8 @@ desktop.ini
 .idea
 .iml
 *.sublime-workspace
+
+ 
+# pixi environments
+.pixi
+*.egg-info
