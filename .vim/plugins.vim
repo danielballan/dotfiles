@@ -46,6 +46,6 @@ Plug 'dbridges/vim-markdown-runner'
 Plug 'dense-analysis/ale'
 
 " AI?!
-Plug 'madox2/vim-ai'
+" Plug 'madox2/vim-ai'
 
 call plug#end()
