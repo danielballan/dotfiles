@@ -9,3 +9,13 @@ exposed = { rg = "rg" }
 channels = ["conda-forge"]
 dependencies = { fd-find = "*" }
 exposed = { fd = "fd" }
+
+[envs.esptool]
+channels = ["conda-forge"]
+dependencies = { esptool = "*" }
+exposed = { esp_rfc2217_server = "esp_rfc2217_server", espefuse = "espefuse", espsecure = "espsecure", esptool = "esptool" }
+
+[envs.visidata]
+channels = ["conda-forge"]
+dependencies = { visidata = "*" }
+exposed = { vd = "vd", "vd2to3.vdx" = "vd2to3.vdx", visidata = "visidata" }
