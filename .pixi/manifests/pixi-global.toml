@@ -50,7 +50,7 @@ scikit-learn = "*"
 scipy = "*"
 sparse = "*"
 tiled = "*"
-zarr = "<3"
+zarr = "*"
 
 [envs.hyperfine]
 channels = ["conda-forge"]
