@@ -1,0 +1,2 @@
+# bash, default on most Linux distributions
+source ~/.pixi/completions/bash/*

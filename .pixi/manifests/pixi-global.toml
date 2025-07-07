@@ -9,3 +9,97 @@ exposed = { rg = "rg" }
 channels = ["conda-forge"]
 dependencies = { fd-find = "*" }
 exposed = { fd = "fd" }
+
+[envs.httpie]
+channels = ["conda-forge"]
+dependencies = { httpie = "*" }
+exposed = { http = "http" }
+
+[envs.scipy]
+channels = ["conda-forge"]
+exposed = { ipython = "ipython" , jupyter = "jupyter", jupyter-lab = "jupyter-lab", tiled = "tiled", python = "python"}
+
+[envs.scipy.dependencies]
+bluesky = "*"
+bluesky-tiled-plugins = "*"
+h5py = "*"
+ipython = "*"
+julia = "*"
+jupyter = "*"
+jupyterlab = "*"
+matplotlib = "*"
+notebook = "*"
+numba = "*"
+numpy = "*"
+ophyd = "*"
+pytorch = "*"
+scikit-learn = "*"
+scipy = "*"
+sparse = "*"
+tiled = "*"
+zarr = "<3"
+
+[envs.hyperfine]
+channels = ["conda-forge"]
+dependencies = { hyperfine = "*" }
+exposed = { hyperfine = "hyperfine" }
+
+[envs.pgcli]
+channels = ["conda-forge"]
+dependencies = { pgcli = "*" }
+exposed = { pgcli = "pgcli" }
+
+[envs.gh]
+channels = ["conda-forge"]
+dependencies = { gh = "*" }
+exposed = { gh = "gh" }
+
+[envs.micromamba]
+channels = ["conda-forge"]
+dependencies = { micromamba = "*" }
+exposed = { micromamba = "micromamba" }
+
+[envs.uv]
+channels = ["conda-forge"]
+dependencies = { uv = "*" }
+exposed = { uv = "uv", uvx = "uvx" }
+
+[envs.fzf]
+channels = ["conda-forge"]
+dependencies = { fzf = "*" }
+exposed = { fzf = "fzf" }
+
+[envs.pixi-pack]
+channels = ["conda-forge"]
+dependencies = { pixi-pack = "*" }
+exposed = { pixi-pack = "pixi-pack" }
+
+[envs.jq]
+channels = ["conda-forge"]
+dependencies = { jq = "*" }
+exposed = { jq = "jq" }
+
+[envs.yq]
+channels = ["conda-forge"]
+dependencies = { yq = "*" }
+exposed = { tomlq = "tomlq", yq = "yq", xq = "xq" }
+
+[envs.rust]
+channels = ["conda-forge"]
+dependencies = { rust = "*" }
+exposed = { cargo = "cargo", cargo-clippy = "cargo-clippy", cargo-fmt = "cargo-fmt", clippy-driver = "clippy-driver", rust-analyzer = "rust-analyzer", rust-gdb = "rust-gdb", rust-gdbgui = "rust-gdbgui", rust-lldb = "rust-lldb", rustc = "rustc", rustdoc = "rustdoc", rustfmt = "rustfmt" }
+
+[envs.rattler-build]
+channels = ["conda-forge"]
+dependencies = { rattler-build = "*" }
+exposed = { rattler-build = "rattler-build" }
+
+[envs.websocat]
+channels = ["conda-forge"]
+dependencies = { websocat = { url = "file:///home/dallan/Repos/bnl/websocat-feedstock/output/linux-64/websocat-1.14.0-hb0f4dca_0.conda" } }
+exposed = { websocat = "websocat" }
+
+[envs.brev]
+channels = ["conda-forge"]
+dependencies = { brev = "*" }
+exposed = { brev = "brev" }
