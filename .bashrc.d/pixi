@@ -1,0 +1,2 @@
+export PATH=$HOME/.pixi/bin:$PATH
+source $HOME/.pixi/completions/bash/*

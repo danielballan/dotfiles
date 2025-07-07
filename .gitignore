@@ -3,3 +3,4 @@
 .ssh/config.d/private*
 .vim/autoload
 .vim/plugged
+.vim/.netrwhist
