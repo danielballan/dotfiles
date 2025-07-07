@@ -31,6 +31,7 @@ channels = ["conda-forge"]
 exposed = { ipython = "ipython" , jupyter = "jupyter", jupyter-lab = "jupyter-lab", tiled = "tiled", python = "python"}
 
 [envs.scipy.dependencies]
+awkward = "*"
 bluesky = "*"
 bluesky-tiled-plugins = "*"
 h5py = "*"
@@ -44,6 +45,7 @@ numba = "*"
 numpy = "*"
 ophyd = "*"
 pytorch = "*"
+ragged = "*"
 scikit-learn = "*"
 scipy = "*"
 sparse = "*"
