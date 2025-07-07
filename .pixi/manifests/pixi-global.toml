@@ -1,3 +1,4 @@
+# .pixi/manifests/pixi-global.toml
 version = 1
 
 [envs.ripgrep]
