@@ -51,3 +51,5 @@ link_file .ssh/config.d
 mkdir -p $HOME/.config/wezterm
 link_file .config/wezterm/wezterm.lua
 link_file .pixi/manifests/pixi-global.toml
+mkdir -p $HOME/.ipython/profile_default
+link_file .ipython/profile_default/ipython_config.py
