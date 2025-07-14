@@ -62,6 +62,8 @@ nnoremap <Leader>l :SidewaysRight<CR>
 " Use \r to execute Markdown codeblock. \R inserts the output in the document.
 autocmd FileType markdown nnoremap <buffer> <Leader>r :MarkdownRunner<CR>
 autocmd FileType markdown nnoremap <buffer> <Leader>R :MarkdownRunnerInsert<CR>
+" Format JS with prettier.
+autocmd BufWritePre,TextChanged,InsertLeave *.js Neoformat
 
 " Use \f to run fixers.
 autocmd FileType python map <buffer> <Leader>f :ALEFix<CR>
