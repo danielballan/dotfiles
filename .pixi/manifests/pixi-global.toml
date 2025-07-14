@@ -117,3 +117,8 @@ exposed = { websocat = "websocat" }
 channels = ["conda-forge"]
 dependencies = { brev = "*" }
 exposed = { brev = "brev" }
+
+[envs.nodejs]
+channels = ["conda-forge"]
+dependencies = { nodejs = "*" }
+exposed = { corepack = "corepack", node = "node", npm = "npm", npx = "npx" }

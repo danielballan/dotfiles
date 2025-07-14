@@ -45,6 +45,8 @@ Plug 'dbridges/vim-markdown-runner'
 " linters and fixers
 Plug 'dense-analysis/ale'
 
+Plug 'sbdchd/neoformat'
+
 " AI?!
 " Plug 'madox2/vim-ai'
 

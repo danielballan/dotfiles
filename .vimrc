@@ -62,6 +62,8 @@ nnoremap <Leader>l :SidewaysRight<CR>
 " Use \r to execute Markdown codeblock. \R inserts the output in the document.
 autocmd FileType markdown nnoremap <buffer> <Leader>r :MarkdownRunner<CR>
 autocmd FileType markdown nnoremap <buffer> <Leader>R :MarkdownRunnerInsert<CR>
+" Format JS with prettier.
+autocmd BufWritePre,TextChanged,InsertLeave *.js Neoformat
 
 " Use \f to run fixers.
 autocmd FileType python map <buffer> <Leader>f :ALEFix<CR>
@@ -71,3 +73,6 @@ colorscheme PaperColor
 set spell
 
 let g:vim_ai_token_file_path = '~/.config/openai.token'
+
+" Use project-local prettier executable
+let g:neoformat_try_node_exe = 1
