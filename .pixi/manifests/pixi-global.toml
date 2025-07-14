@@ -19,3 +19,13 @@ exposed = { esp_rfc2217_server = "esp_rfc2217_server", espefuse = "espefuse", es
 channels = ["conda-forge"]
 dependencies = { visidata = "*" }
 exposed = { vd = "vd", "vd2to3.vdx" = "vd2to3.vdx", visidata = "visidata" }
+
+[envs.screen]
+channels = ["conda-forge"]
+dependencies = { screen = "*" }
+exposed = { screen = "screen", "screen-4.8.0" = "screen-4.8.0" }
+
+[envs.nodejs]
+channels = ["conda-forge"]
+dependencies = { nodejs = "*" }
+exposed = { corepack = "corepack", node = "node", npm = "npm", npx = "npx" }
