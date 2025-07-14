@@ -71,3 +71,6 @@ colorscheme PaperColor
 set spell
 
 let g:vim_ai_token_file_path = '~/.config/openai.token'
+
+" Use project-local prettier executable
+let g:neoformat_try_node_exe = 1
