@@ -122,3 +122,8 @@ exposed = { brev = "brev" }
 channels = ["conda-forge"]
 dependencies = { nodejs = "*" }
 exposed = { corepack = "corepack", node = "node", npm = "npm", npx = "npx" }
+
+[envs.shellcheck]
+channels = ["conda-forge"]
+dependencies = { shellcheck = "*" }
+exposed = { shellcheck = "shellcheck" }
