@@ -64,7 +64,22 @@ jcs() {
         cmd="$cmd -y \"$priority\""
     fi
     
-    eval "$cmd"
+    # Execute create command and capture issue key
+    local create_output
+    create_output=$(eval "$cmd")
+    echo "$create_output"
+    
+    # If status is specified, move the issue
+    if [[ -n "$status" ]]; then
+        local issue_key
+	issue_key=$(echo "$create_output" | grep -o '[A-Z][A-Z0-9]*-[0-9]\+' | head -1)
+        if [[ -n "$issue_key" ]]; then
+            echo "Moving $issue_key to status: $status"
+            jira issue move "$issue_key" "$status" --no-input
+        else
+            echo "Warning: Could not extract issue key to move to status '$status'"
+        fi
+    fi
 }
 
 # Function to create a Jira Task
@@ -78,7 +93,7 @@ jct() {
     
     if [[ -z "$title" ]]; then
         echo "Error: Task title is required"
-        echo "Usage: jct \"Task title\" -C component [\"description\"] [-l label] [-y priority]"
+        echo "Usage: jct \"Task title\" -C component [\"description\"] [-l label] [-y priority] [-S status]"
         return 1
     fi
     
@@ -114,11 +129,12 @@ jct() {
     
     if [[ -z "$component" ]]; then
         echo "Error: Component is required"
-        echo "Usage: jct \"Task title\" -C component [\"description\"] [-l label] [-y priority]"
+        echo "Usage: jct \"Task title\" -C component [\"description\"] [-l label] [-y priority] [-S status]"
         return 1
     fi
     
-    local cmd="jira issue create --no-input -C \"$component\" -p DT1 --label \"$label\" -t Task -s \"$title\""
+    local cmd
+    cmd="jira issue create --no-input -C \"$component\" -p DT1 --label \"$label\" -t Task -s \"$title\""
     
     if [[ -n "$description" ]]; then
         cmd="$cmd -b \"$description\""
@@ -128,7 +144,22 @@ jct() {
         cmd="$cmd -y \"$priority\""
     fi
     
-    eval "$cmd"
+    # Execute create command and capture issue key
+    local create_output
+    create_output=$(eval "$cmd")
+    echo "$create_output"
+    
+    # If status is specified, move the issue
+    if [[ -n "$status" ]]; then
+        local issue_key
+	issue_key=$(echo "$create_output" | grep -o '[A-Z][A-Z0-9]*-[0-9]\+' | head -1)
+        if [[ -n "$issue_key" ]]; then
+            echo "Moving $issue_key to status: $status"
+            jira issue move "$issue_key" "$status" --no-input
+        else
+            echo "Warning: Could not extract issue key to move to status '$status'"
+        fi
+    fi
 }
 
 # Function to list issues with DE label
