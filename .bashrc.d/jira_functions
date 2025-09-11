@@ -4,12 +4,13 @@
 # Based on your existing jira-cli setup with project DT1 and label DE
 
 # Function to create a Jira Story
-# Usage: jcs "Story title" -C component ["description"] [-l label] [-y priority] [-S status] [-P parent] [-a assignee]
+# Usage: jcs "Story title" -C component ["description"] [-l label1,label2] [-y priority] [-S status] [-P parent] [-a assignee]
 jcs() {
     local title="$1"
     local description=""
     local component=""
-    local label="DE"
+    local labels=""
+    local use_default_label=true
     local priority=""
     local status=""
     local parent=""
@@ -17,7 +18,7 @@ jcs() {
     
     if [[ -z "$title" ]]; then
         echo "Error: Story title is required"
-        echo "Usage: jcs \"Story title\" -C component [\"description\"] [-l label] [-y priority] [-S status] [-P parent] [-a assignee]"
+        echo "Usage: jcs \"Story title\" -C component [\"description\"] [-l label1,label2] [-y priority] [-S status] [-P parent] [-a assignee]"
         return 1
     fi
     
@@ -32,7 +33,8 @@ jcs() {
                 shift 2
                 ;;
             -l|--label)
-                label="$2"
+                labels="$2"
+                use_default_label=false
                 shift 2
                 ;;
             -y|--priority)
@@ -65,11 +67,24 @@ jcs() {
     
     if [[ -z "$component" ]]; then
         echo "Error: Component is required"
-        echo "Usage: jcs \"Story title\" -C component [\"description\"] [-l label] [-y priority] [-S status] [-P parent] [-a assignee]"
+        echo "Usage: jcs \"Story title\" -C component [\"description\"] [-l label1,label2] [-y priority] [-S status] [-P parent] [-a assignee]"
         return 1
     fi
     
-    local cmd="jira issue create --no-input -C \"$component\" -p DT1 --label \"$label\" -t Story -s \"$title\""
+    local cmd="jira issue create --no-input -C \"$component\" -p DT1 -t Story -s \"$title\""
+    
+    # Handle labels
+    if [[ "$use_default_label" == true ]]; then
+        cmd="$cmd --label \"DE\""
+    elif [[ -n "$labels" ]]; then
+        # Split comma-separated labels and add each one
+        IFS=',' read -ra LABEL_ARRAY <<< "$labels"
+        for label in "${LABEL_ARRAY[@]}"; do
+            # Trim whitespace
+            label=$(echo "$label" | xargs)
+            cmd="$cmd --label \"$label\""
+        done
+    fi
     
     if [[ -n "$description" ]]; then
         cmd="$cmd -b \"$description\""
@@ -122,12 +137,13 @@ jcs() {
 }
 
 # Function to create a Jira Task
-# Usage: jct "Task title" -C component ["description"] [-l label] [-y priority] [-S status] [-P parent] [-a assignee]
+# Usage: jct "Task title" -C component ["description"] [-l label1,label2] [-y priority] [-S status] [-P parent] [-a assignee]
 jct() {
     local title="$1"
     local description=""
     local component=""
-    local label="DE"
+    local labels=""
+    local use_default_label=true
     local priority=""
     local status=""
     local parent=""
@@ -135,7 +151,7 @@ jct() {
     
     if [[ -z "$title" ]]; then
         echo "Error: Task title is required"
-        echo "Usage: jct \"Task title\" -C component [\"description\"] [-l label] [-y priority] [-S status] [-P parent] [-a assignee]"
+        echo "Usage: jct \"Task title\" -C component [\"description\"] [-l label1,label2] [-y priority] [-S status] [-P parent] [-a assignee]"
         return 1
     fi
     
@@ -150,7 +166,8 @@ jct() {
                 shift 2
                 ;;
             -l|--label)
-                label="$2"
+                labels="$2"
+                use_default_label=false
                 shift 2
                 ;;
             -y|--priority)
@@ -183,12 +200,24 @@ jct() {
     
     if [[ -z "$component" ]]; then
         echo "Error: Component is required"
-        echo "Usage: jct \"Task title\" -C component [\"description\"] [-l label] [-y priority] [-S status] [-P parent] [-a assignee]"
+        echo "Usage: jct \"Task title\" -C component [\"description\"] [-l label1,label2] [-y priority] [-S status] [-P parent] [-a assignee]"
         return 1
     fi
     
-    local cmd
-    cmd="jira issue create --no-input -C \"$component\" -p DT1 --label \"$label\" -t Task -s \"$title\""
+    local cmd="jira issue create --no-input -C \"$component\" -p DT1 -t Task -s \"$title\""
+    
+    # Handle labels
+    if [[ "$use_default_label" == true ]]; then
+        cmd="$cmd --label \"DE\""
+    elif [[ -n "$labels" ]]; then
+        # Split comma-separated labels and add each one
+        IFS=',' read -ra LABEL_ARRAY <<< "$labels"
+        for label in "${LABEL_ARRAY[@]}"; do
+            # Trim whitespace
+            label=$(echo "$label" | xargs)
+            cmd="$cmd --label \"$label\""
+        done
+    fi
     
     if [[ -n "$description" ]]; then
         cmd="$cmd -b \"$description\""
@@ -246,8 +275,8 @@ jira_help() {
 Jira CLI Helper Functions Usage:
 
 Functions:
-  jcs "Story title" -C component ["description"] [-l label] [-y priority] [-S status] [-P parent] [-a assignee]
-  jct "Task title" -C component ["description"] [-l label] [-y priority] [-S status] [-P parent] [-a assignee]
+  jcs "Story title" -C component ["description"] [-l label1,label2] [-y priority] [-S status] [-P parent] [-a assignee]
+  jct "Task title" -C component ["description"] [-l label1,label2] [-y priority] [-S status] [-P parent] [-a assignee]
 
 Required:
   - Title (first argument)
@@ -255,7 +284,10 @@ Required:
 
 Optional:
   - Description (any non-flag argument)
-  - Label (-l flag, defaults to "DE")
+  - Labels (-l flag, defaults to "DE" if not specified)
+    - Multiple labels: -l "urgent,backend,sprint-1"
+    - Single label: -l "critical"
+    - Default: Uses "DE" when -l is omitted
   - Priority (-y flag)
   - Status (-S flag, moves issue after creation)
   - Parent (-P flag, links to parent issue)
@@ -264,9 +296,9 @@ Optional:
 Examples:
   jcs "Implement user authentication" -C Backend
   jcs "Add login page" -C Frontend "Create responsive login form" -y High -a john.doe
-  jct "Update documentation" -C DevOps "Update API docs for new endpoints" -a jane.smith
-  jcs "Critical bug fix" -C Backend "Fix memory leak" -y Highest -l critical -a admin
-  jct "Review pull request" -C Frontend -S "In Progress" -a reviewer
+  jcs "Critical bug fix" -C Backend "Fix memory leak" -l "urgent,bug,critical" -y Highest
+  jct "Update documentation" -C DevOps "Update API docs for new endpoints" -l "docs,api" -a jane.smith
+  jct "Review pull request" -C Frontend -S "In Progress" -l "review,frontend" -a reviewer
   jcs "User story subtask" -C Backend -P "DT1-123" "Child story under epic" -a developer
   jct "Implementation task" -C Frontend -P "DT1-456" "Task linked to story" -a frontend.dev
   jim "DT1-789" "doing"  # Move issue to In Progress
@@ -279,9 +311,14 @@ Status aliases:
 
 Default values:
   - Project: DT1
-  - Label: DE (can be overridden with -l)
+  - Label: DE (only when -l is not specified)
   - Component: REQUIRED (must specify with -C)
   - Assignee: None (can be specified with -a)
+
+Label behavior:
+  - No -l flag: Uses default "DE" label
+  - With -l flag: Uses specified labels, overrides default
+  - Multiple labels: Separate with commas: -l "label1,label2,label3"
 EOF
 }
 
