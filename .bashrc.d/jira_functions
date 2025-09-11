@@ -1,0 +1,172 @@
+#!/bin/bash
+
+# Jira CLI Helper Functions for Creating Stories and Tasks
+# Based on your existing jira-cli setup with project DT1 and label DE
+
+# Function to create a Jira Story
+# Usage: jcs "Story title" -C component ["description"] [-l label] [-y priority]
+jcs() {
+    local title="$1"
+    local description=""
+    local component=""
+    local label="DE"
+    local priority=""
+    
+    if [[ -z "$title" ]]; then
+        echo "Error: Story title is required"
+        echo "Usage: jcs \"Story title\" -C component [\"description\"] [-l label] [-y priority]"
+        return 1
+    fi
+    
+    # Shift past the title
+    shift
+    
+    # Parse options and description
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            -C|--component)
+                component="$2"
+                shift 2
+                ;;
+            -l|--label)
+                label="$2"
+                shift 2
+                ;;
+            -y|--priority)
+                priority="$2"
+                shift 2
+                ;;
+            -*)
+                echo "Unknown option: $1"
+                shift
+                ;;
+            *)
+                # If it's not an option, treat it as description
+                description="$1"
+                shift
+                ;;
+        esac
+    done
+    
+    if [[ -z "$component" ]]; then
+        echo "Error: Component is required"
+        echo "Usage: jcs \"Story title\" -C component [\"description\"] [-l label] [-y priority]"
+        return 1
+    fi
+    
+    local cmd="jira issue create --no-input -C \"$component\" -p DT1 --label \"$label\" -t Story -s \"$title\""
+    
+    if [[ -n "$description" ]]; then
+        cmd="$cmd -b \"$description\""
+    fi
+    
+    if [[ -n "$priority" ]]; then
+        cmd="$cmd -y \"$priority\""
+    fi
+    
+    eval "$cmd"
+}
+
+# Function to create a Jira Task
+# Usage: jct "Task title" -C component ["description"] [-l label] [-y priority]
+jct() {
+    local title="$1"
+    local description=""
+    local component=""
+    local label="DE"
+    local priority=""
+    
+    if [[ -z "$title" ]]; then
+        echo "Error: Task title is required"
+        echo "Usage: jct \"Task title\" -C component [\"description\"] [-l label] [-y priority]"
+        return 1
+    fi
+    
+    # Shift past the title
+    shift
+    
+    # Parse options and description
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            -C|--component)
+                component="$2"
+                shift 2
+                ;;
+            -l|--label)
+                label="$2"
+                shift 2
+                ;;
+            -y|--priority)
+                priority="$2"
+                shift 2
+                ;;
+            -*)
+                echo "Unknown option: $1"
+                shift
+                ;;
+            *)
+                # If it's not an option, treat it as description
+                description="$1"
+                shift
+                ;;
+        esac
+    done
+    
+    if [[ -z "$component" ]]; then
+        echo "Error: Component is required"
+        echo "Usage: jct \"Task title\" -C component [\"description\"] [-l label] [-y priority]"
+        return 1
+    fi
+    
+    local cmd="jira issue create --no-input -C \"$component\" -p DT1 --label \"$label\" -t Task -s \"$title\""
+    
+    if [[ -n "$description" ]]; then
+        cmd="$cmd -b \"$description\""
+    fi
+    
+    if [[ -n "$priority" ]]; then
+        cmd="$cmd -y \"$priority\""
+    fi
+    
+    eval "$cmd"
+}
+
+# Function to list issues with DE label
+# Usage: jil
+jil() {
+    jira issue list -l DE
+}
+
+# Helper function to show usage examples
+jira_help() {
+    cat << 'EOF'
+Jira CLI Helper Functions Usage:
+
+Functions:
+  jcs "Story title" -C component ["description"] [-l label] [-y priority]
+  jct "Task title" -C component ["description"] [-l label] [-y priority]
+
+Required:
+  - Title (first argument)
+  - Component (-C flag)
+
+Optional:
+  - Description (any non-flag argument)
+  - Label (-l flag, defaults to "DE")
+  - Priority (-y flag)
+
+Examples:
+  jcs "Implement user authentication" -C Backend
+  jcs "Add login page" -C Frontend "Create responsive login form" -y High
+  jct "Update documentation" -C DevOps "Update API docs for new endpoints"
+  jcs "Critical bug fix" -C Backend "Fix memory leak" -y Highest -l critical
+
+Default values:
+  - Project: DT1
+  - Label: DE (can be overridden with -l)
+  - Component: REQUIRED (must specify with -C)
+EOF
+}
+
+# Export functions to make them available in the shell
+export -f jcs jct jil jira_help
