@@ -4,7 +4,7 @@
 # Based on your existing jira-cli setup with project DT1 and label DE
 
 # Function to create a Jira Story
-# Usage: jcs "Story title" -C component ["description"] [-l label] [-y priority] [-S status]
+# Usage: jcs "Story title" -C component ["description"] [-l label] [-y priority] [-S status] [-P parent]
 jcs() {
     local title="$1"
     local description=""
@@ -12,10 +12,11 @@ jcs() {
     local label="DE"
     local priority=""
     local status=""
+    local parent=""
     
     if [[ -z "$title" ]]; then
         echo "Error: Story title is required"
-        echo "Usage: jcs \"Story title\" -C component [\"description\"] [-l label] [-y priority] [-S status]"
+        echo "Usage: jcs \"Story title\" -C component [\"description\"] [-l label] [-y priority] [-S status] [-P parent]"
         return 1
     fi
     
@@ -41,6 +42,10 @@ jcs() {
                 status="$2"
                 shift 2
                 ;;
+            -P|--parent)
+                parent="$2"
+                shift 2
+                ;;
             -*)
                 echo "Unknown option: $1"
                 shift
@@ -55,7 +60,7 @@ jcs() {
     
     if [[ -z "$component" ]]; then
         echo "Error: Component is required"
-        echo "Usage: jcs \"Story title\" -C component [\"description\"] [-l label] [-y priority] [-S status]"
+        echo "Usage: jcs \"Story title\" -C component [\"description\"] [-l label] [-y priority] [-S status] [-P parent]"
         return 1
     fi
     
@@ -67,6 +72,10 @@ jcs() {
     
     if [[ -n "$priority" ]]; then
         cmd="$cmd -y \"$priority\""
+    fi
+    
+    if [[ -n "$parent" ]]; then
+        cmd="$cmd -P \"$parent\""
     fi
     
     # Execute create command and capture issue key
@@ -104,7 +113,7 @@ jcs() {
 }
 
 # Function to create a Jira Task
-# Usage: jct "Task title" -C component ["description"] [-l label] [-y priority] [-S status]
+# Usage: jct "Task title" -C component ["description"] [-l label] [-y priority] [-S status] [-P parent]
 jct() {
     local title="$1"
     local description=""
@@ -112,10 +121,11 @@ jct() {
     local label="DE"
     local priority=""
     local status=""
+    local parent=""
     
     if [[ -z "$title" ]]; then
         echo "Error: Task title is required"
-        echo "Usage: jct \"Task title\" -C component [\"description\"] [-l label] [-y priority] [-S status]"
+        echo "Usage: jct \"Task title\" -C component [\"description\"] [-l label] [-y priority] [-S status] [-P parent]"
         return 1
     fi
     
@@ -141,6 +151,10 @@ jct() {
                 status="$2"
                 shift 2
                 ;;
+            -P|--parent)
+                parent="$2"
+                shift 2
+                ;;
             -*)
                 echo "Unknown option: $1"
                 shift
@@ -155,7 +169,7 @@ jct() {
     
     if [[ -z "$component" ]]; then
         echo "Error: Component is required"
-        echo "Usage: jct \"Task title\" -C component [\"description\"] [-l label] [-y priority] [-S status]"
+        echo "Usage: jct \"Task title\" -C component [\"description\"] [-l label] [-y priority] [-S status] [-P parent]"
         return 1
     fi
     
@@ -168,6 +182,10 @@ jct() {
     
     if [[ -n "$priority" ]]; then
         cmd="$cmd -y \"$priority\""
+    fi
+    
+    if [[ -n "$parent" ]]; then
+        cmd="$cmd -P \"$parent\""
     fi
     
     # Execute create command and capture issue key
@@ -204,20 +222,14 @@ jct() {
     fi
 }
 
-# Function to list issues with DE label
-# Usage: jil
-jil() {
-    jira issue list -l DE
-}
-
 # Helper function to show usage examples
 jira_help() {
     cat << 'EOF'
 Jira CLI Helper Functions Usage:
 
 Functions:
-  jcs "Story title" -C component ["description"] [-l label] [-y priority] [-S status]
-  jct "Task title" -C component ["description"] [-l label] [-y priority] [-S status]
+  jcs "Story title" -C component ["description"] [-l label] [-y priority] [-S status] [-P parent]
+  jct "Task title" -C component ["description"] [-l label] [-y priority] [-S status] [-P parent]
 
 Required:
   - Title (first argument)
@@ -228,6 +240,7 @@ Optional:
   - Label (-l flag, defaults to "DE")
   - Priority (-y flag)
   - Status (-S flag, moves issue after creation)
+  - Parent (-P flag, links to parent issue)
 
 Examples:
   jcs "Implement user authentication" -C Backend
@@ -235,6 +248,15 @@ Examples:
   jct "Update documentation" -C DevOps "Update API docs for new endpoints"
   jcs "Critical bug fix" -C Backend "Fix memory leak" -y Highest -l critical
   jct "Review pull request" -C Frontend -S "In Progress"
+  jcs "User story subtask" -C Backend -P "DT1-123" "Child story under epic"
+  jct "Implementation task" -C Frontend -P "DT1-456" "Task linked to story"
+  jim "DT1-789" "doing"  # Move issue to In Progress
+  jim "DT1-101" "Selected For Development"  # Move using full status name
+
+Status aliases:
+  - "todo" → "Selected For Development"
+  - "backlog" → "Backlog"
+  - "doing" → "In Progress"
 
 Default values:
   - Project: DT1
@@ -243,5 +265,45 @@ Default values:
 EOF
 }
 
+# Function to move Jira issue to a different status
+# Usage: jim <issue_key> <status>
+jim() {
+    local issue_key="$1"
+    local status="$2"
+    
+    if [[ -z "$issue_key" || -z "$status" ]]; then
+        echo "Error: Issue key and status are required"
+        echo "Usage: jim <issue_key> <status>"
+        echo "Status aliases: todo, backlog, doing (or use full status names)"
+        return 1
+    fi
+    
+    # Map status aliases to full status names
+    case "$status" in
+        "todo")
+            status="Selected For Development"
+            ;;
+        "backlog")
+            status="Backlog"
+            ;;
+        "doing")
+            status="In Progress"
+            ;;
+        # Keep original status if no alias matches
+        *)
+            # No change needed
+            ;;
+    esac
+    
+    echo "Moving $issue_key to status: $status"
+    jira issue move "$issue_key" "$status" --no-input
+}
+
+# Function to list issues with DE label
+# Usage: jil
+jil() {
+    jira issue list -l DE
+}
+
 # Export functions to make them available in the shell
-export -f jcs jct jil jira_help
+export -f jcs jct jil jim jira_help
