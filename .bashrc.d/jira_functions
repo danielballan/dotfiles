@@ -4,17 +4,18 @@
 # Based on your existing jira-cli setup with project DT1 and label DE
 
 # Function to create a Jira Story
-# Usage: jcs "Story title" -C component ["description"] [-l label] [-y priority]
+# Usage: jcs "Story title" -C component ["description"] [-l label] [-y priority] [-S status]
 jcs() {
     local title="$1"
     local description=""
     local component=""
     local label="DE"
     local priority=""
+    local status=""
     
     if [[ -z "$title" ]]; then
         echo "Error: Story title is required"
-        echo "Usage: jcs \"Story title\" -C component [\"description\"] [-l label] [-y priority]"
+        echo "Usage: jcs \"Story title\" -C component [\"description\"] [-l label] [-y priority] [-S status]"
         return 1
     fi
     
@@ -36,6 +37,10 @@ jcs() {
                 priority="$2"
                 shift 2
                 ;;
+            -S|--status)
+                status="$2"
+                shift 2
+                ;;
             -*)
                 echo "Unknown option: $1"
                 shift
@@ -50,7 +55,7 @@ jcs() {
     
     if [[ -z "$component" ]]; then
         echo "Error: Component is required"
-        echo "Usage: jcs \"Story title\" -C component [\"description\"] [-l label] [-y priority]"
+        echo "Usage: jcs \"Story title\" -C component [\"description\"] [-l label] [-y priority] [-S status]"
         return 1
     fi
     
@@ -99,13 +104,14 @@ jcs() {
 }
 
 # Function to create a Jira Task
-# Usage: jct "Task title" -C component ["description"] [-l label] [-y priority]
+# Usage: jct "Task title" -C component ["description"] [-l label] [-y priority] [-S status]
 jct() {
     local title="$1"
     local description=""
     local component=""
     local label="DE"
     local priority=""
+    local status=""
     
     if [[ -z "$title" ]]; then
         echo "Error: Task title is required"
@@ -129,6 +135,10 @@ jct() {
                 ;;
             -y|--priority)
                 priority="$2"
+                shift 2
+                ;;
+            -S|--status)
+                status="$2"
                 shift 2
                 ;;
             -*)
@@ -200,17 +210,14 @@ jil() {
     jira issue list -l DE
 }
 
-# Alias to move an issue
-alias jim="jira issue move"
-
 # Helper function to show usage examples
 jira_help() {
     cat << 'EOF'
 Jira CLI Helper Functions Usage:
 
 Functions:
-  jcs "Story title" -C component ["description"] [-l label] [-y priority]
-  jct "Task title" -C component ["description"] [-l label] [-y priority]
+  jcs "Story title" -C component ["description"] [-l label] [-y priority] [-S status]
+  jct "Task title" -C component ["description"] [-l label] [-y priority] [-S status]
 
 Required:
   - Title (first argument)
@@ -220,12 +227,14 @@ Optional:
   - Description (any non-flag argument)
   - Label (-l flag, defaults to "DE")
   - Priority (-y flag)
+  - Status (-S flag, moves issue after creation)
 
 Examples:
   jcs "Implement user authentication" -C Backend
   jcs "Add login page" -C Frontend "Create responsive login form" -y High
   jct "Update documentation" -C DevOps "Update API docs for new endpoints"
   jcs "Critical bug fix" -C Backend "Fix memory leak" -y Highest -l critical
+  jct "Review pull request" -C Frontend -S "In Progress"
 
 Default values:
   - Project: DT1
