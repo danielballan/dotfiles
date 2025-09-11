@@ -71,6 +71,22 @@ jcs() {
     
     # If status is specified, move the issue
     if [[ -n "$status" ]]; then
+	# Map status aliases to full status names
+        case "$status" in
+            "todo")
+                status="Selected For Development"
+                ;;
+            "backlog")
+                status="Backlog"
+                ;;
+            "doing")
+                status="In Progress"
+                ;;
+            # Keep original status if no alias matches
+            *)
+                # No change needed
+                ;;
+        esac
         local issue_key
 	issue_key=$(echo "$create_output" | grep -o '[A-Z][A-Z0-9]*-[0-9]\+' | head -1)
         if [[ -n "$issue_key" ]]; then
@@ -151,6 +167,22 @@ jct() {
     
     # If status is specified, move the issue
     if [[ -n "$status" ]]; then
+	# Map status aliases to full status names
+        case "$status" in
+            "todo")
+                status="Selected For Development"
+                ;;
+            "backlog")
+                status="Backlog"
+                ;;
+            "doing")
+                status="In Progress"
+                ;;
+            # Keep original status if no alias matches
+            *)
+                # No change needed
+                ;;
+        esac
         local issue_key
 	issue_key=$(echo "$create_output" | grep -o '[A-Z][A-Z0-9]*-[0-9]\+' | head -1)
         if [[ -n "$issue_key" ]]; then
@@ -167,6 +199,9 @@ jct() {
 jil() {
     jira issue list -l DE
 }
+
+# Alias to move an issue
+alias jim="jira issue move"
 
 # Helper function to show usage examples
 jira_help() {
