@@ -23,6 +23,9 @@ else
 fi
 
 # Install pixi (idempotent - the script checks if already installed)
+# The binary is added to the $PATH in .bashrc.d/pixi so we
+# disable the installer adding it to .bashrc
+export PIXI_NO_PATH_UPDATE=1
 curl -fsSL https://pixi.sh/install.sh | bash
 
 # Install vim-plug
