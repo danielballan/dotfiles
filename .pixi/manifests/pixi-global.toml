@@ -132,3 +132,18 @@ exposed = { shellcheck = "shellcheck" }
 channels = ["conda-forge"]
 dependencies = { pre-commit = "*" }
 exposed = { pre-commit = "pre-commit" }
+
+[envs.git-filter-repo]
+channels = ["conda-forge"]
+dependencies = { git-filter-repo = "*" }
+exposed = { git-filter-repo = "git-filter-repo" }
+
+[envs.copier]
+channels = ["conda-forge"]
+dependencies = { copier = "*", copier-templates-extensions = "*" }
+exposed = { copier = "copier" }
+
+[envs.bat]
+channels = ["conda-forge"]
+dependencies = { bat = "*" }
+exposed = { bat = "bat" }
