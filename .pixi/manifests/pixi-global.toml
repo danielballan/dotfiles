@@ -147,3 +147,8 @@ exposed = { copier = "copier" }
 channels = ["conda-forge"]
 dependencies = { bat = "*" }
 exposed = { bat = "bat" }
+
+[envs.age]
+channels = ["conda-forge"]
+dependencies = { age = "*" }
+exposed = { age = "age", age-keygen = "age-keygen" }
