@@ -28,7 +28,7 @@ exposed = { http = "http" }
 
 [envs.scipy]
 channels = ["conda-forge"]
-exposed = { ipython = "ipython", jupyter = "jupyter", jupyter-lab = "jupyter-lab", tiled = "tiled", python = "python", ipython3 = "ipython3", ".julia-post-link" = ".julia-post-link", julia = "julia", jupyter-labextension = "jupyter-labextension", jupyter-labhub = "jupyter-labhub", jlpm = "jlpm", jupyter-notebook = "jupyter-notebook", numba = "numba", f2py = "f2py", numpy-config = "numpy-config", convert-caffe2-to-onnx = "convert-caffe2-to-onnx", convert-onnx-to-caffe2 = "convert-onnx-to-caffe2", torchfrtrace = "torchfrtrace", torchrun = "torchrun", napari = "napari" }
+exposed = { ipython = "ipython", jupyter = "jupyter", jupyter-lab = "jupyter-lab", tiled = "tiled", python = "python", ipython3 = "ipython3", ".julia-post-link" = ".julia-post-link", julia = "julia", jupyter-labextension = "jupyter-labextension", jupyter-labhub = "jupyter-labhub", jlpm = "jlpm", jupyter-notebook = "jupyter-notebook", numba = "numba", f2py = "f2py", numpy-config = "numpy-config", torchfrtrace = "torchfrtrace", torchrun = "torchrun", napari = "napari", zarr = "zarr" }
 
 [envs.scipy.dependencies]
 awkward = "*"
@@ -121,7 +121,7 @@ exposed = { brev = "brev" }
 [envs.nodejs]
 channels = ["conda-forge"]
 dependencies = { nodejs = "*" }
-exposed = { corepack = "corepack", node = "node", npm = "npm", npx = "npx" }
+exposed = { node = "node", npm = "npm", npx = "npx" }
 
 [envs.shellcheck]
 channels = ["conda-forge"]
