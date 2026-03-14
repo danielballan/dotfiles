@@ -152,3 +152,8 @@ exposed = { bat = "bat" }
 channels = ["conda-forge"]
 dependencies = { age = "*" }
 exposed = { age = "age", age-keygen = "age-keygen" }
+
+[envs.atuin]
+channels = ["conda-forge"]
+dependencies = { atuin = "*" }
+exposed = { atuin = "atuin" }
