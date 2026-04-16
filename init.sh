@@ -22,11 +22,7 @@ else
     echo "Dotfiles repository already exists, skipping clone."
 fi
 
-# Install pixi (idempotent - the script checks if already installed)
-# The binary is added to the $PATH in .bashrc.d/pixi so we
-# disable the installer adding it to .bashrc
-export PIXI_NO_PATH_UPDATE=1
-curl -fsSL https://pixi.sh/install.sh | bash
+~/Repos/personal/dotfiles/install.sh
 
 # Install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -34,3 +30,11 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 # Install vim plugins
 vim -c 'PlugInstall | quitall'
+
+# Install pixi (idempotent - the script checks if already installed)
+# The binary is added to the $PATH in .bashrc.d/pixi so we
+# disable the installer adding it to .bashrc
+export PIXI_NO_PATH_UPDATE=1
+curl -fsSL https://pixi.sh/install.sh | bash
+
+pixi global sync
