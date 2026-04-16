@@ -36,9 +36,6 @@ Plug 'tpope/vim-rhubarb'
 " Signs for added/changed/removed lines
 Plug 'lewis6991/gitsigns.nvim'
 
-" colors
-Plug 'NLKNguyen/papercolor-theme'
-
 " Execute Python snippets in Markdown
 Plug 'dbridges/vim-markdown-runner'
 
