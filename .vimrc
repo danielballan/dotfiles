@@ -69,7 +69,10 @@ autocmd BufWritePre,TextChanged,InsertLeave *.js Neoformat
 autocmd FileType python map <buffer> <Leader>f :ALEFix<CR>
 
 " colors
+call plug#begin()
 Plug 'NLKNguyen/papercolor-theme'
+call plug#end()
+
 colorscheme PaperColor
 
 set spell
