@@ -22,7 +22,7 @@ else
     echo "Dotfiles repository already exists, skipping clone."
 fi
 
-~/Repos/personal/dotfiles/install.sh
+bash ~/Repos/personal/dotfiles/install.sh
 
 # Install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
