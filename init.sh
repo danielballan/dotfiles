@@ -37,4 +37,4 @@ vim -c 'PlugInstall | quitall'
 export PIXI_NO_PATH_UPDATE=1
 curl -fsSL https://pixi.sh/install.sh | bash
 
-pixi global sync
+$HOME/.pixi/bin/pixi global sync
