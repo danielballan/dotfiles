@@ -68,6 +68,8 @@ autocmd BufWritePre,TextChanged,InsertLeave *.js Neoformat
 " Use \f to run fixers.
 autocmd FileType python map <buffer> <Leader>f :ALEFix<CR>
 
+" colors
+Plug 'NLKNguyen/papercolor-theme'
 colorscheme PaperColor
 
 set spell
