@@ -11,10 +11,10 @@ channels = ["conda-forge"]
 dependencies = { fd-find = "*" }
 exposed = { fd = "fd" }
 
-[envs.esptool]
-channels = ["conda-forge"]
-dependencies = { esptool = "*" }
-exposed = { esp_rfc2217_server = "esp_rfc2217_server", espefuse = "espefuse", espsecure = "espsecure", esptool = "esptool" }
+# [envs.esptool]
+# channels = ["conda-forge"]
+# dependencies = { esptool = "*" }
+# exposed = { esp_rfc2217_server = "esp_rfc2217_server", espefuse = "espefuse", espsecure = "espsecure", esptool = "esptool" }
 
 [envs.visidata]
 channels = ["conda-forge"]
@@ -28,7 +28,7 @@ exposed = { http = "http" }
 
 [envs.scipy]
 channels = ["conda-forge"]
-exposed = { ipython = "ipython", jupyter = "jupyter", jupyter-lab = "jupyter-lab", tiled = "tiled", python = "python", ipython3 = "ipython3", ".julia-post-link" = ".julia-post-link", julia = "julia", jupyter-labextension = "jupyter-labextension", jupyter-labhub = "jupyter-labhub", jlpm = "jlpm", jupyter-notebook = "jupyter-notebook", numba = "numba", f2py = "f2py", numpy-config = "numpy-config", torchfrtrace = "torchfrtrace", torchrun = "torchrun", napari = "napari", zarr = "zarr" }
+exposed = { ipython = "ipython", jupyter = "jupyter", jupyter-lab = "jupyter-lab", tiled = "tiled", python = "python", ipython3 = "ipython3", jupyter-labextension = "jupyter-labextension", jupyter-labhub = "jupyter-labhub", jlpm = "jlpm", jupyter-notebook = "jupyter-notebook", numba = "numba", f2py = "f2py", numpy-config = "numpy-config", torchfrtrace = "torchfrtrace", torchrun = "torchrun", napari = "napari", zarr = "zarr" }
 
 [envs.scipy.dependencies]
 awkward = "*"
