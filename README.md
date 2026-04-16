@@ -1,5 +1,5 @@
 Bootstrap a VM with:
 
 ```sh
-bash <(curl -fsSL https://raw.githubusercontent.com/danielballan/dotfiles/main/init.sh)
+curl -L https://init.danallan.com | bash
 ```
