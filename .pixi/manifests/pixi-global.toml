@@ -36,7 +36,6 @@ bluesky = "*"
 bluesky-tiled-plugins = "*"
 h5py = "*"
 ipython = "*"
-julia = "*"
 jupyter = "*"
 jupyterlab = "*"
 matplotlib = "*"
@@ -108,10 +107,10 @@ channels = ["conda-forge"]
 dependencies = { rattler-build = "*" }
 exposed = { rattler-build = "rattler-build" }
 
-[envs.websocat]
-channels = ["conda-forge"]
-dependencies = { websocat = { url = "file:///home/dallan/Repos/bnl/websocat-feedstock/output/linux-64/websocat-1.14.0-hb0f4dca_0.conda" } }
-exposed = { websocat = "websocat" }
+# [envs.websocat]
+# channels = ["conda-forge"]
+# dependencies = { websocat = { url = "file:///home/dallan/Repos/bnl/websocat-feedstock/output/linux-64/websocat-1.14.0-hb0f4dca_0.conda" } }
+# exposed = { websocat = "websocat" }
 
 [envs.brev]
 channels = ["conda-forge"]
