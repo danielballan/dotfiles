@@ -86,7 +86,7 @@ prompt_cmd () {
     export PROMPT=$PS1
 }
 
-PROMPT_COMMAND='prompt_cmd'
+PROMPT_COMMAND="prompt_cmd${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
 
 export CLICOLOR=1
 

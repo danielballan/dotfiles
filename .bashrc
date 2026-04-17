@@ -6,8 +6,8 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 # Source all files in ~/.bashrc.d/
-for i in ~/.bashrc.d/* ; do
-    if [ -r "$i" ]; then
-        source $i
+for i in $(ls ~/.bashrc.d/ | sort); do
+    if [ -r ~/.bashrc.d/"$i" ]; then
+        source ~/.bashrc.d/"$i"
     fi
 done

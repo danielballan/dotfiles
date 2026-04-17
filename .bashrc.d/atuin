@@ -1,1 +1,5 @@
+# bash-preexec (required for atuin on bash)
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+
+# atuin (installed via pixi global)
 eval "$(atuin init bash)"
