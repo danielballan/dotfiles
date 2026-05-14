@@ -68,12 +68,11 @@ autocmd BufWritePre,TextChanged,InsertLeave *.js Neoformat
 " Use \f to run fixers.
 autocmd FileType python map <buffer> <Leader>f :ALEFix<CR>
 
-" colors
-if !empty(glob('~/.vim/plugged/papercolor-theme'))
-  colorscheme PaperColor
-endif
-
 set spell
+highlight SpellBad   gui=underline guifg=NONE guibg=NONE cterm=underline ctermfg=NONE ctermbg=NONE
+highlight SpellCap   gui=underline guifg=NONE guibg=NONE cterm=underline ctermfg=NONE ctermbg=NONE
+highlight SpellRare  gui=underline guifg=NONE guibg=NONE cterm=underline ctermfg=NONE ctermbg=NONE
+highlight SpellLocal gui=underline guifg=NONE guibg=NONE cterm=underline ctermfg=NONE ctermbg=NONE
 
 let g:vim_ai_token_file_path = '~/.config/openai.token'
 
