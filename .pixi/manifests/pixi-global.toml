@@ -100,7 +100,7 @@ exposed = { tomlq = "tomlq", yq = "yq", xq = "xq" }
 [envs.rust]
 channels = ["conda-forge"]
 dependencies = { rust = "*" }
-exposed = { cargo = "cargo", cargo-clippy = "cargo-clippy", cargo-fmt = "cargo-fmt", clippy-driver = "clippy-driver", rust-analyzer = "rust-analyzer", rust-gdb = "rust-gdb", rust-gdbgui = "rust-gdbgui", rust-lldb = "rust-lldb", rustc = "rustc", rustdoc = "rustdoc", rustfmt = "rustfmt" }
+exposed = { cargo = "cargo", cargo-clippy = "cargo-clippy", cargo-fmt = "cargo-fmt", clippy-driver = "clippy-driver", rust-gdb = "rust-gdb", rust-gdbgui = "rust-gdbgui", rust-lldb = "rust-lldb", rustc = "rustc", rustdoc = "rustdoc", rustfmt = "rustfmt" }
 
 [envs.rattler-build]
 channels = ["conda-forge"]
@@ -156,3 +156,13 @@ exposed = { age = "age", age-keygen = "age-keygen" }
 channels = ["conda-forge"]
 dependencies = { atuin = "*" }
 exposed = { atuin = "atuin" }
+
+[envs.ruff]
+channels = ["conda-forge"]
+dependencies = { ruff = "*" }
+exposed = { ruff = "ruff" }
+
+[envs.zellij]
+channels = ["conda-forge"]
+dependencies = { zellij = "*" }
+exposed = { zellij = "zellij" }
