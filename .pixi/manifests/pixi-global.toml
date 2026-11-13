@@ -166,3 +166,8 @@ exposed = { ruff = "ruff" }
 channels = ["conda-forge"]
 dependencies = { zellij = "*" }
 exposed = { zellij = "zellij" }
+
+[envs.just]
+channels = ["conda-forge"]
+dependencies = { just = "*" }
+exposed = { just = "just" }
