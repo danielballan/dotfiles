@@ -171,3 +171,8 @@ exposed = { zellij = "zellij" }
 channels = ["conda-forge"]
 dependencies = { just = "*" }
 exposed = { just = "just" }
+
+[envs.openssh]
+channels = ["conda-forge"]
+dependencies = { openssh = "*" }
+exposed = { ssh-keygen = "ssh-keygen" }
