@@ -51,6 +51,8 @@ link_file .ssh/config
 link_file .ssh/config.d
 mkdir -p $HOME/.config/wezterm
 link_file .config/wezterm/wezterm.lua
+mkdir -p $HOME/.config
+link_file .config/zellij
 mkdir -p $HOME/.pixi/manifests/
 link_file .pixi/manifests/pixi-global.toml
 mkdir -p $HOME/.ipython/profile_default
