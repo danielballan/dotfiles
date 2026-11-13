@@ -1,6 +1,7 @@
 # atuin (installed via pixi global)
-# Drop bash-preexec state inherited from a parent shell (e.g. via zellij);
-# otherwise bash-preexec thinks it's installed and never sets its DEBUG trap.
-unset __bp_imported bash_preexec_imported
-PROMPT_COMMAND='__update_prompt'
 eval "$(atuin init bash)"
+
+# A site-specific /etc/profile.d script exports PROMPT_COMMAND. Child shells
+# then inherit bash-preexec's hooks, and bash-preexec won't install its DEBUG
+# trap when it finds them already present. Keep PROMPT_COMMAND local.
+export -n PROMPT_COMMAND
