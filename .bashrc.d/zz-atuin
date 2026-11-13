@@ -1,0 +1,6 @@
+# atuin (installed via pixi global)
+# Drop bash-preexec state inherited from a parent shell (e.g. via zellij);
+# otherwise bash-preexec thinks it's installed and never sets its DEBUG trap.
+unset __bp_imported bash_preexec_imported
+PROMPT_COMMAND='__update_prompt'
+eval "$(atuin init bash)"
