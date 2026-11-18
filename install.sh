@@ -57,3 +57,11 @@ mkdir -p $HOME/.pixi/manifests/
 link_file .pixi/manifests/pixi-global.toml
 mkdir -p $HOME/.ipython/profile_default
 link_file .ipython/profile_default/ipython_config.py
+
+# Link wezterm config to Windows location (WSL only)
+if grep -qi microsoft /proc/version 2>/dev/null; then
+    WEZTERM_WIN_DIR="$(wslpath "$(cmd.exe /c 'echo %APPDATA%' 2>/dev/null | tr -d '\r')")/wezterm"
+    mkdir -p "$WEZTERM_WIN_DIR"
+    cp "$DIR/.config/wezterm/wezterm.lua" "$WEZTERM_WIN_DIR/wezterm.lua"
+    echo "wezterm config also *copied* to $WEZTERM_WIN_DIR/wezterm.lua"
+fi

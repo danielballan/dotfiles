@@ -165,7 +165,7 @@ exposed = { ruff = "ruff" }
 [envs.zellij]
 channels = ["conda-forge"]
 dependencies = { zellij = "*" }
-exposed = { zellij = "zellij" }
+exposed = { zellij = "zellij", zellij-terminal = "zellij-terminal" }
 
 [envs.just]
 channels = ["conda-forge"]
